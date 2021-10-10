@@ -1,9 +1,9 @@
-#include <libft.h>
-
-void	*memset (void *destination, int c, size_t n)
+void	*memset(void *buf, int ch, size_t count)
 {
-	char	c;
+	unsigned char	*c;
 
-	c = *str;
-	return (c);
+	c = (unsigned char *)buf;
+	while (count--)
+		*c++ = (unsigned char)ch;
+	return (buf);
 }
