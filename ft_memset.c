@@ -1,4 +1,6 @@
-void	*memset(void *buf, int ch, size_t count)
+#include "libft.h"
+
+void	*ft_memset(void *buf, int ch, size_t count)
 {
 	unsigned char	*c;
 

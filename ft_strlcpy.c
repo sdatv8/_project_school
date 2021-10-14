@@ -1,21 +1,21 @@
-void	strlcpy(char * restrict dst, const char * restrict src, size_t dstsize)
+#include "libft.h"
+
+size_t ft_strlcpy(char *restrict dst, const char* src, size_t size)
 {
-	size_t	i;
+	size_t i;
+	size_t	k;
 
 	i = 0;
-	if(!src)
-		return (0);
-	if (dstsize)
+	k = 0;
+	while (src[k])
+		k++;
+	if (size == 0)
+		return(k);
+	while (src[i] && i < size - 1)
 	{
-		while (i < dstsize - 1 && src[i])
-		{
-			dst[i] = src[i];
-			++i;
-		}
-		dst[i] = '\0';
+		dst[i] = src[i];
+		i++;
 	}
-	while (src[i])
-		++i;
-	return (i);
-	}
+	dst[i] = '\0';
+	return (k);
 }
