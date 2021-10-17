@@ -12,23 +12,17 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strchr(char *s, int c)
+char	ft_strchr(char *s, int c)
 {
 	int i;
 
 	i = 0;
-	if (c == '\0')
+	while (s[i])
 	{
-		while (s[i] != '\0')
-			i++;
-		return (&s[i]);
-	}
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
+		if (c == s[i])
 			return (&s[i]);
 		i++;
-	}
+	}	
 	return (NULL);
 }
 
@@ -45,9 +39,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str = malloc(sizeof(char) * (ft_strlen((char *)s1) + 1));
 	if (!str)
 		return (NULL);
-	while (s1)
+	while (s1[i])
 	{
-		if (ft_strchr(set, s1[i]) != 0)
+		if (!ft_strchr(set, s1[i]))
 			str[j++] = s1[i];
 		i++;
 	}
@@ -59,7 +53,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 int	main()
 {
 	char	str1[100] = "123456789";
-	char	str2[100] = "9jfisagng";
+	char	str2[100] = "12345";
 
 	printf("1 %s\n", str1);
 	ft_strtrim(str1, str2);
