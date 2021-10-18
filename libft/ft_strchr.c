@@ -5,14 +5,13 @@ char	*ft_strchr(char *s, int c)
 	int i;
 
 	i = 0;
-	if (!s || !c)
-		return (NULL);
-	
-	while (*s)
+	while (s[i])
 	{
-		if (s[i] == (char *)c)
-			return (&s[i]);
+		if ((char)c == s[i])
+			return ((char *)s + i);
 		i++;
 	}
+	if (!s[i] && !c)
+		return ((char *)s + i);
 	return (NULL);
 }
