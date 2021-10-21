@@ -1,22 +1,28 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Sjannet <sjannet@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/21 19:27:18 by Sjannet           #+#    #+#             */
+/*   Updated: 2021/10/21 19:32:30 by Sjannet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	*ft_memchr(const void* b, int c, size_t len)
+#include "libft.h"
+
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int 	i;
-	char	*s;
+	size_t	i;
+	char	*str;
 
-	s = (char*)b;
+	str = (char *)s;
 	i = 0;
-	if (c == '\0')
+	while (i < n)
 	{
-		while (s[i] != '\0')
-			i++;
-		return (&s[i]);
-	}
-	while (s[i] != '\0' && i < len)
-	{
-		if (s[i] == c)
-			return (&s[i]);
+		if (str[i] == (char)c)
+			return (&str[i]);
 		i++;
 	}
 	return (NULL);

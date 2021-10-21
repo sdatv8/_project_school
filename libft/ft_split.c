@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sjannet <sjannet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Sjannet <sjannet@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 21:01:40 by sjannet           #+#    #+#             */
-/*   Updated: 2021/10/20 21:01:48 by sjannet          ###   ########.fr       */
+/*   Updated: 2021/10/21 21:23:04 by Sjannet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ int		count_word(char *s, char c)
 }
 
 
-char	**ft_split(char const *s, char c)
-{
-	char	**tmp;
-	int		i;
+// char	**ft_split(char const *s, char c)
+// {
+// 	char	**tmp;
+// 	int		i;
 
-	i = 0;
-	**tmp = (char **)malloc(sizeof(char) * (count_word(s, c) + 1));
+// 	i = 0;
+// 	**tmp = (char **)malloc(sizeof(char) * (count_word(s, c) + 1));
 	
 
-}
+// }
 
 int main ()
 {

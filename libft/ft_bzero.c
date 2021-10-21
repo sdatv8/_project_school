@@ -1,15 +1,25 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Sjannet <sjannet@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/21 20:42:05 by Sjannet           #+#    #+#             */
+/*   Updated: 2021/10/21 20:42:21 by Sjannet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	*ft_bzero(void *s, size_t n)
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
-	char	*t;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	t = (char*)s;
 	while (i < n)
 	{
-		t[i] = '\0';
+		((char *)s)[i] = 0;
 		i++;
 	}
 }

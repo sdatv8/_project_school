@@ -1,17 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Sjannet <sjannet@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/21 19:43:23 by Sjannet           #+#    #+#             */
+/*   Updated: 2021/10/21 20:23:56 by Sjannet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	int i;
-
-	i = 0;
-	while (s[i])
-	{
-		if ((char)c == s[i])
-			return ((char *)s + i);
-		i++;
-	}
-	if (!s[i] && !c)
-		return ((char *)s + i);
+	while (*s && *s != (unsigned char)c)
+		s++;
+	if (*s == (char)c)
+		return ((char *)s);
 	return (NULL);
 }
