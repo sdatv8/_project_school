@@ -6,7 +6,7 @@
 /*   By: Sjannet <sjannet@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 20:31:25 by Sjannet           #+#    #+#             */
-/*   Updated: 2021/10/21 20:31:45 by Sjannet          ###   ########.fr       */
+/*   Updated: 2021/10/23 16:32:11 by Sjannet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	while (s[i])
 		i++;
 	k = malloc(sizeof(char) * i + 1);

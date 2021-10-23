@@ -5,50 +5,92 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: Sjannet <sjannet@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/20 21:01:40 by sjannet           #+#    #+#             */
-/*   Updated: 2021/10/21 21:23:04 by Sjannet          ###   ########.fr       */
+/*   Created: 2021/10/23 15:23:26 by Sjannet           #+#    #+#             */
+/*   Updated: 2021/10/23 15:26:11 by Sjannet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-int		count_word(char *s, char c)
+static int	count_words(const char *s, char c)
 {
-	int		i;
-	int		len;
+	int	count;
 
-	i = 0;
-	len = 0;
-	while (s[i])
+	count = 0;
+	while (*s)
 	{
-		if (s[i] != c)
+		while (*s && *s == c)
+			s++;
+		if (*s && *s != c)
 		{
-			while (s[i] && s[i] != c)
-				i++;
-			len++;
+			count++;
+			while (*s && *s != c)
+				s++;
 		}
-		else
-			i++;
 	}
-	return (len);
+	return (count);
 }
 
-
-// char	**ft_split(char const *s, char c)
-// {
-// 	char	**tmp;
-// 	int		i;
-
-// 	i = 0;
-// 	**tmp = (char **)malloc(sizeof(char) * (count_word(s, c) + 1));
-	
-
-// }
-
-int main ()
+static char	**ft_malloc_fr(char **arr)
 {
-	char	str[100] = "   dfa  faf  fs sdf s sdf sf s";
-	char	c = ' ';
-	count_word(str, c);
+	unsigned int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	return (NULL);
+}
+
+static char	*malloc_word(const char *s, char c)
+{
+	char	*word;
+	int		i;
+
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	word = (char *)malloc(sizeof(char) * (i + 1));
+	if (word == 0)
+		return (NULL);
+	i = 0;
+	while (s[i] && s[i] != c)
+	{
+		word[i] = s[i];
+		i++;
+	}
+	word[i] = '\0';
+	return (word);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**arr;
+	int		i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	arr = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
+	if (arr == 0)
+		return (NULL);
+	while (*s)
+	{
+		while (*s && *s == c)
+			s++;
+		if (*s && *s != c)
+		{
+			arr[i] = malloc_word(s, c);
+			if (arr[i] == NULL)
+				return (ft_malloc_fr(arr));
+			i++;
+			while (*s && *s != c)
+				s++;
+		}
+	}
+	arr[i] = NULL;
+	return (arr);
 }

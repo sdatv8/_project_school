@@ -6,18 +6,27 @@
 /*   By: Sjannet <sjannet@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 21:16:44 by Sjannet           #+#    #+#             */
-/*   Updated: 2021/10/21 21:16:45 by Sjannet          ###   ########.fr       */
+/*   Updated: 2021/10/23 17:21:50 by Sjannet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_nbrlen(int c)
+int	ft_nbrlen(int c)
 {
-	int		i;
+	int	i;
+
 	i = 1;
-	while (c /= 10)
+	if (c < 0)
+	{
+		i = i + 1;
+		c = c * (-1);
+	}
+	while (c > 9)
+	{
+		c = c / 10;
 		i++;
+	}
 	return (i);
 }
 
@@ -25,33 +34,26 @@ char	*ft_itoa(int n)
 {
 	char	*str;
 	int		i;
-	int		j;
-	int		len;
 
-	i = 0;
-	j = 0;
-	len = ft_nbrlen(n);
-	if (!n)
-		return (NULL);
+	i = ft_nbrlen(n);
 	if (n == -2147483648)
-		return ("-2147483648");
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
+		return (ft_strdup("-2147483648"));
+	str = malloc(sizeof(char) * (i + 1));
+	if (str == 0)
 		return (NULL);
-
-	str[len] = '\0';
 	if (n < 0)
 	{
 		str[0] = '-';
-		n *= -1;
+		n = n * (-1);
 	}
-	printf ("%d\n", n);
-	while (i < len)
+	str[i] = '\0';
+	if (n == 0)
+		str[0] = '0';
+	while (n > 0)
 	{
-		str[len] = (n % 10) + '0';
-		n /= 10;
-		len--;
+		str[i - 1] = (n % 10) + '0';
+		n = n / 10;
+		i--;
 	}
-	printf ("%s", str);
 	return (str);
 }
